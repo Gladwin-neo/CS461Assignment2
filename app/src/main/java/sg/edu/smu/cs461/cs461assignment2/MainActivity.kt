@@ -9,7 +9,6 @@ import org.w3c.dom.Text
 import sg.edu.smu.cs461.cs461assignment2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private var toDoItem = ArrayList<String>()
     private lateinit var myAdapter: ArrayAdapter<String>
     private lateinit var binding: ActivityMainBinding
 
