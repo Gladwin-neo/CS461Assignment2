@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setContentView(R.layout.activity_main)
-
-
+        
         setupList()
     }
 
@@ -34,11 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         Toast.makeText(this, "You have added ${item.text} to your to do list!", Toast.LENGTH_SHORT).show()
 
-
-        binding.toDoListLv.setOnItemClickListener { list, itemNotUsed, index, id ->
-            toDoList.add(item.text.toString())
-            myAdapter.notifyDataSetChanged()
-        }
+        toDoList.add(item.text.toString())
+        myAdapter.notifyDataSetChanged()
 
         item.setText("")
     }
