@@ -1,28 +1,24 @@
 package sg.edu.smu.cs461.cs461assignment2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
-import org.w3c.dom.Text
-import java.io.File
-import java.io.PrintStream
-import android.content.Context
-import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import sg.edu.smu.cs461.cs461assignment2.databinding.ActivityMainBinding
+import java.io.PrintStream
 
 class MainActivity : AppCompatActivity() {
     private lateinit var myAdapter: ArrayAdapter<String>
     private lateinit var binding: ActivityMainBinding
+    private var toDoList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setContentView(R.layout.activity_main)
-
     }
 
     fun addItem(view: View) {
@@ -34,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "You have added ${item.text} to your to do list!", Toast.LENGTH_SHORT).show()
         item.setText("")
 
-
+        binding.toDoListLv.setOnItemClickListener { list, item, index, id ->
+            toDoList.add(item.toString())
+            myAdapter.notifyDataSetChanged()
+        }
     }
 }
